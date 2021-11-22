@@ -20,7 +20,7 @@ namespace EggCalculator.ViewModels
         private List<ICalendarEvent> events;
         private Simulation selectedSimulation;
         private Simulation startingSimulation;
-        private int simulationDays;
+        private int simulationDays = 365;
         private Rates rates = new();
         private bool metamonAutoBuy = true;
         private Rarity metamonAutoBuyRarity = Rarity.NORMAL;
@@ -228,7 +228,6 @@ namespace EggCalculator.ViewModels
             };
 
             StartingSimulation.AccountState.Metamons.Add(new Metamon(Rarity.NORMAL, 1, "Metamon", 100));
-            SimulationDays = 90;
             calendar.CalendarEventDoubleClickedEvent += Calendar_CalendarEventDoubleClickedEvent;
         }
 

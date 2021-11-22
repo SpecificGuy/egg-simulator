@@ -92,7 +92,7 @@ namespace EggCalculator.UserControls
                 {
                     resimulateCommand = new RelayCommand(
                         param => this.Resimulate(),
-                        param => true
+                        param => Simulation is not null
                     );
                 }
                 return resimulateCommand;
