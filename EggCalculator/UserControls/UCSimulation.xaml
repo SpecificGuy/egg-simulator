@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="EggCalculator.UserControls.UCSimulation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EggCalculator.UserControls"
+             mc:Ignorable="d" 
+             x:Name="UserControl"
+             d:DesignHeight="800" d:DesignWidth="200">
+    <UserControl.Resources>
+        <Style x:Key="Label" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        </Style>
+        <Style x:Key="Content" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="350"></RowDefinition>
+            <RowDefinition Height="250"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="250"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource Label}" Text="Date"></TextBlock>
+                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DateFrom}"></TextBlock>
+
+                <TextBlock Style="{StaticResource Label}" Text="Raca Balance"></TextBlock>
+                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.RacaBalance}"></TextBlock>
+
+                <TextBlock Style="{StaticResource Label}"  Text="Fragment Balance"></TextBlock>
+                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.FragmentBalance}"></TextBlock>
+
+                <TextBlock Style="{StaticResource Label}"  Text="Potion Balance"></TextBlock>
+                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.PotionBalance}"></TextBlock>
+
+                <TextBlock Style="{StaticResource Label}"  Text="Egg Balance"></TextBlock>
+                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.EggBalance}"></TextBlock>
+
+                <TextBlock Style="{StaticResource Label}"  Text="Raca Total Revenue"></TextBlock>
+                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.RacaRevenue}"></TextBlock>
+
+                <TextBlock Style="{StaticResource Label}"  Text="Total Metamon"></TextBlock>
+                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.Metamons.Count}"></TextBlock>
+            </StackPanel>
+        <StackPanel  Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource Label}" Text="Level Ups"></TextBlock>
+            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MetamonLevelUp}"></TextBlock>
+
+            <TextBlock Style="{StaticResource Label}" Text="League Ups"></TextBlock>
+            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MetamonLeagueUp}"></TextBlock>
+
+            <TextBlock Style="{StaticResource Label}"  Text="Daily Fragments"></TextBlock>
+            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.Fragments}"></TextBlock>
+
+            <TextBlock Style="{StaticResource Label}"  Text="Matches played"></TextBlock>
+            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MatchCount}"></TextBlock>
+            
+            <TextBlock Style="{StaticResource Label}"  Text="Matches cost"></TextBlock>
+            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MatchCost}"></TextBlock>
+            
+            <TextBlock Style="{StaticResource Label}"  Text="Eggs Minted"></TextBlock>
+            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.EggsMinted}"></TextBlock>
+
+            <TextBlock Style="{StaticResource Label}"  Text="Gross Daily Cost"></TextBlock>
+            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.GrossDailyCost}"></TextBlock>
+
+            <TextBlock Style="{StaticResource Label}"  Text="Gross Daily Gain"></TextBlock>
+            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.GrossDailyGain}"></TextBlock>
+        </StackPanel>
+        
+        <DockPanel Grid.Row="1" Grid.ColumnSpan="2">
+            <ListView x:Name="MetamonGrid" ItemsSource="{Binding ElementName=UserControl, Path=Simulation.AccountState.Metamons}" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Rarity}" Header="Rarity" Width="120"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Level}" Header="Level" Width="120"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Experience}" Header="Experience" Width="120"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding League}" Header="League" Width="120"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+        <DockPanel Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Content="Add N Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="0"></Button>
+                <Button Grid.Column="1" Content="Add R Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="1"></Button>
+                <Button Grid.Column="2" Content="Add SR Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="2"></Button>
+                <Button Grid.Column="3" Content="Add SSR Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="3"></Button>
+                <Button Grid.ColumnSpan="4" Grid.Row="2" Content="Remove Metamon" Command="{Binding ElementName=UserControl, Path=DeleteMetamonCommand}" CommandParameter="{Binding ElementName=MetamonGrid, Path=SelectedIndex}"></Button>
+
+            </Grid>
+
+        </DockPanel>
+        <DockPanel Grid.Row="3" Grid.ColumnSpan="2">
+            <ListView ItemsSource="{Binding ElementName=UserControl, Path=Simulation.Logs}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding}" Header="Description" Width="500"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+        <DockPanel Grid.Row="4" Grid.ColumnSpan="2">
+            <Button Content="Re-Simulate" Command="{Binding ElementName=UserControl, Path=ResimulateCommand}" CommandParameter="0"></Button>
+        </DockPanel>
+    </Grid>
+</UserControl>

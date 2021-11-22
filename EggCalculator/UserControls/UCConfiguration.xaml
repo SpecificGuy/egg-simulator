@@ -1,0 +1,201 @@
+﻿<UserControl x:Class="EggCalculator.UserControls.UCConfiguration"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EggCalculator.UserControls"
+             mc:Ignorable="d" 
+             x:Name="UserControl"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="SectionTitle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="21" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                <Setter Property="Padding" Value="10"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource SectionTitle}" Text="Starting Account State"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock  Text="Raca Balance"></TextBlock>
+                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.RacaBalance, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock   Text="Fragment Balance"></TextBlock>
+                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.FragmentBalance, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock   Text="Potion Balance"></TextBlock>
+                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.PotionBalance, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock   Text="Egg Balance"></TextBlock>
+                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.EggBalance, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock   Text="Raca Total Revenue"></TextBlock>
+                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.RacaRevenue, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+        </StackPanel>
+        <DockPanel Grid.Row="1" Grid.Column="0">
+            <ListView x:Name="MetamonGrid" ItemsSource="{Binding ElementName=UserControl, Path=Configuration.AccountState.Metamons, Mode=TwoWay}" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Rarity, Mode=TwoWay}" Header="Rarity" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Level, Mode=TwoWay}" Header="Level" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Experience, Mode=TwoWay}" Header="Experience" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding League, Mode=TwoWay}" Header="League" Width="120"/>
+                   
+                </GridView>
+                
+            </ListView.View>
+            </ListView>
+        </DockPanel>
+        <DockPanel  Grid.Row ="2" Grid.Column="0" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Content="Add N Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="NORMAL"></Button>
+                <Button Grid.Column="1" Content="Add R Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="RARE"></Button>
+                <Button Grid.Column="2" Content="Add SR Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="SUPER_RARE"></Button>
+                <Button Grid.Column="3" Content="Add SSR Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="SUPER_SUPER_RARE"></Button>
+                <Button Grid.ColumnSpan="4" Grid.Row="2" Content="Remove Metamon" Command="{Binding ElementName=UserControl, Path=DeleteMetamonCommand}" CommandParameter="{Binding ElementName=MetamonGrid, Path=SelectedIndex}"></Button>
+
+            </Grid>
+
+        </DockPanel>
+        <DockPanel Grid.Row ="3" Grid.Column="0" Grid.ColumnSpan="4">
+            <Button Content="Simulate" Command="{Binding ElementName=UserControl, Path=SimulateCommand}" Height="50" ></Button>
+        </DockPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource SectionTitle}" Text="Global Rates"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Match Limit"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MatchLimit, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Experience Limit"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.ExperienceLimit, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Egg Fragment Quantity"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.EggFragmentQuantity, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource SectionTitle}" Text="Simulation Parameters"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Minimum Raca Revenue"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MinimumRacaRevenue, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Revenue start on metamon count"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MetamonCountRevenueStart, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Potion buying on metamon count"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MetamonCountPotionBuyStart, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Simulation Days"></TextBlock>
+                <TextBox Text="{Binding Path=SimulationDays, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox IsChecked="{Binding Path=MetamonAutoBuy, Mode=TwoWay}"></CheckBox>
+                <ComboBox x:Name="CmbRarity" SelectedItem="{Binding Path=MetamonAutoBuyRarity}"></ComboBox>
+                <TextBlock Text="  Metamon Auto Buy"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox IsChecked="{Binding Path=AutoRevenue, Mode=TwoWay}"></CheckBox>
+                <TextBlock Text="Auto Revenue"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox IsChecked="{Binding Path=AutoMintEggs, Mode=TwoWay}"></CheckBox>
+                <TextBlock Text="Auto Mint Eggs"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox IsChecked="{Binding Path=AutoSellEggs, Mode=TwoWay}"></CheckBox>
+                <TextBlock Text="Auto Sell Eggs"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox IsChecked="{Binding Path=AutoBuyPotions, Mode=TwoWay}"></CheckBox>
+                <TextBlock Text="Auto Buy Potion"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox IsChecked="{Binding Path=AutoLevelUp, Mode=TwoWay}"></CheckBox>
+                <TextBlock Text="Auto Level Up"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource SectionTitle}" Text="Prices"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Egg Price"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.EggPrice, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Normal Metamon Price"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.NormalMetamonPrice, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Rare Metamon Price"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.RareMetamonPrice, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Super Rare Metamon Price"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.SuperRareMetamonPrice, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Super Super Rare Metamon Price"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.SuperSuperRareMetamonPrice, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Potion Price"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.PotionPrice, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Yellow Diamond Price"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.YellowDiamondPrice, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Violet Diamond Price"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.VioletDiamondPrice, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Black Diamond Price"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.BlackDiamondPrice, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

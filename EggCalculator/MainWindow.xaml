@@ -1,0 +1,62 @@
+﻿<Window x:Class="EggCalculator.MainWindow"
+        xmlns:calendar="clr-namespace:WPF.EventCalendar;assembly=WPF.EventCalendar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EggCalculator"
+        xmlns:uc="clr-namespace:EggCalculator.UserControls"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        x:Name="mw"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionaries\BaseDictonary.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Column="0" Grid.Row="0">
+            <TabItem Header="Calendar">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="500"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DockPanel Grid.Column="0" Grid.Row="1">
+                        <calendar:CalendarMonth x:Name="Calendar" Events="{Binding Path=Events}"/>
+                    </DockPanel>
+                    <DockPanel Grid.Column="1" Grid.Row="1">
+                        <uc:UCSimulation Simulation="{Binding Path=SelectedSimulation}"></uc:UCSimulation>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Charts">
+                <uc:UCCharts x:Name="Charts"></uc:UCCharts>
+            </TabItem>
+            <TabItem Header="Configuration">
+                <uc:UCConfiguration Configuration="{Binding Path=StartingSimulation, Mode=TwoWay}" Rates="{Binding Path=Rates, Mode=TwoWay}"></uc:UCConfiguration>
+            </TabItem>
+            <TabItem Header="Price">
+                <uc:UCPrice></uc:UCPrice>
+            </TabItem>
+        </TabControl>
+        <DockPanel HorizontalAlignment="Right"  Grid.Row="1">
+            <uc:UCDonation></uc:UCDonation>
+        </DockPanel>
+    </Grid>
+</Window>

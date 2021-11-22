@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="EggCalculator.UserControls.UCDonation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EggCalculator.UserControls"
+             mc:Ignorable="d" 
+             x:Name="UserControl"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+        <TextBlock FontStyle="Italic" FontWeight="Bold" Text="Do you like the this tool? Please consider donating RACA to "></TextBlock>
+        <Button  FontStyle="Italic" FontWeight="Bold" Content="0xDCa11E1108180D9638Efcc71a4c9db39e97A3085" Command="{Binding ElementName=UserControl, Path=CopyToClipboardCommand}"></Button>
+    </DockPanel>
+</UserControl>
