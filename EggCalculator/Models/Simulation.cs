@@ -125,7 +125,7 @@ namespace EggCalculator.Models
         {
             if (AccountState.FragmentBalance / Rates.EggFragmentQuantity > 0)
             {
-                int eggQuantity = AccountState.FragmentBalance / Rates.EggFragmentQuantity;
+                int eggQuantity = (int)AccountState.FragmentBalance / Rates.EggFragmentQuantity;
 
                 AccountState.EggBalance += eggQuantity;
                 AccountState.FragmentBalance = AccountState.FragmentBalance % Rates.EggFragmentQuantity;

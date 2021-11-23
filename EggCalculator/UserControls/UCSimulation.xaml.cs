@@ -47,6 +47,13 @@ namespace EggCalculator.UserControls
             Enum.TryParse(rarity, out Rarity r);
             //Simulation.AccountState.Metamons.Add(new Metamon(r, 1, "Metamon", 0));
             Simulation.BuyMetamon(r, true);
+            ((SimulationViewModel)DataContext).Events.Add(new CalendarMark
+            {
+                DateFrom = Simulation.DateFrom,
+                DateTo = Simulation.DateTo,
+                Label = "1 Manual Metamon"
+            });
+
         }
 
         private void DeleteMetamon(int index)

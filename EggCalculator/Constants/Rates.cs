@@ -21,6 +21,17 @@ namespace EggCalculator.Constants
         //public static int MetamonCountRevenueStart = 30;
         //public static int MetamonCountPotionBuyStart = 2;
 
+        private static int experienceOffset = 200;
+
+        public static int ExperienceOffset
+        {
+            get { return experienceOffset ; }
+            set { experienceOffset =  value;
+                NotifyStaticPropertyChanged();
+            }
+        }
+
+
         private static int matchLimit = 20;
 
         public static int MatchLimit
@@ -31,12 +42,12 @@ namespace EggCalculator.Constants
             }
         }
 
-        private static int experienceLimit = 100;
+        private static int baseExperience = 100;
 
-        public static int ExperienceLimit
+        public static int BaseExperience
         {
-            get { return experienceLimit; }
-            set { experienceLimit = value;
+            get { return baseExperience; }
+            set { baseExperience = value;
                 NotifyStaticPropertyChanged();
             }
         }
@@ -272,9 +283,9 @@ namespace EggCalculator.Constants
                 { 32, 89, 249 }, //superrare metamon rates
                 { 64, 179, 501 }  //supersuperrare metamon rates
         };
-        public static double[] MatchWinningRates { get; } = new double[4] { 0.7, 0.78, 0.82, 0.88 };
+        public static double[] MatchWinningRates { get; } = new double[4] { 0.7, 0.8, 0.85, 0.90 };
         public static int[] MatchExperience { get; } = new int[2] { 5, 3 };
-        public static int[] MatchRacaCost { get; } = new int[3] { 50, 100, 200 };
+        public static int[] MatchRacaCost { get; } = new int[3] { 0, 0, 0 };
         private static int GetLeague(int level)
         {
             if (level > 40)
@@ -289,47 +300,75 @@ namespace EggCalculator.Constants
         {
             return MatchRacaCost[GetLeague(level)];
         }
-        public static int GetWinningFragments(int rarity, int level, DateTime date)
+        public static double GetWinningFragments(Rarity rarity, int level, DateTime date)
         {
-            int league = GetLeague(level);
-            if (date >= new DateTime(2021, 12, 25))
-                return FragmentsWinningRatesSixthNerf[rarity,league];
-            if (date >= new DateTime(2021, 12, 20))
-                return FragmentsWinningRatesFifthNerf[rarity, league];
-            if (date >= new DateTime(2021, 12, 15))
-                return FragmentsWinningRatesFourthNerf[rarity, league];
-            if (date >= new DateTime(2021, 12, 10))
-                return FragmentsWinningRatesThirdNerf[rarity, league];
-            if (date >= new DateTime(2021, 12, 5))
-                return FragmentsWinningRatesSecondNerf[rarity, league];
-            if (date >= new DateTime(2021, 11, 27))
-                return FragmentsWinningRatesFirstNerf[rarity, league];
+            //int league = GetLeague(level);
+            //if (date >= new DateTime(2021, 12, 25))
+            //    return FragmentsWinningRatesSixthNerf[rarity,league];
+            //if (date >= new DateTime(2021, 12, 20))
+            //    return FragmentsWinningRatesFifthNerf[rarity, league];
+            //if (date >= new DateTime(2021, 12, 15))
+            //    return FragmentsWinningRatesFourthNerf[rarity, league];
+            //if (date >= new DateTime(2021, 12, 10))
+            //    return FragmentsWinningRatesThirdNerf[rarity, league];
+            //if (date >= new DateTime(2021, 12, 5))
+            //    return FragmentsWinningRatesSecondNerf[rarity, league];
+            //if (date >= new DateTime(2021, 11, 27))
+            //    return FragmentsWinningRatesFirstNerf[rarity, league];
 
-            return FragmentsWinningRates[rarity, league];
+            switch (rarity)
+            {
+                case Rarity.NORMAL:
+                    return 20 + 0.5 * (level - 1);
+                case Rarity.RARE:
+                    return 40 + 2 * (level - 1);
+                case Rarity.SUPER_RARE:
+                    return 64 + 4 * (level - 1);
+                case Rarity.SUPER_SUPER_RARE:
+                    return 100 + 9 + (level - 1);
+                default:
+                    return 0;
+            }
+
+            //return FragmentsWinningRates[(int)rarity, league];
         }
 
-        public static int GetLosingFragments(int rarity, int level, DateTime date)
+        public static double GetLosingFragments(Rarity rarity, int level, DateTime date)
         {
-            int league = GetLeague(level);
-            if (date >= new DateTime(2021, 12, 25))
-                return FragmentsLosingRatesSixthNerf[rarity, league];
-            if (date >= new DateTime(2021, 12, 20))
-                return FragmentsLosingRatesFifthNerf[rarity, league];
-            if (date >= new DateTime(2021, 12, 15))
-                return FragmentsLosingRatesFourthNerf[rarity, league];
-            if (date >= new DateTime(2021, 12, 10))
-                return FragmentsLosingRatesThirdNerf[rarity, league];
-            if (date >= new DateTime(2021, 12, 5))
-                return FragmentsLosingRatesSecondNerf[rarity, league];
-            if (date >= new DateTime(2021, 11, 27))
-                return FragmentsLosingRatesFirstNerf[rarity, league];
+            //int league = GetLeague(level);
+            //if (date >= new DateTime(2021, 12, 25))
+            //    return FragmentsLosingRatesSixthNerf[rarity, league];
+            //if (date >= new DateTime(2021, 12, 20))
+            //    return FragmentsLosingRatesFifthNerf[rarity, league];
+            //if (date >= new DateTime(2021, 12, 15))
+            //    return FragmentsLosingRatesFourthNerf[rarity, league];
+            //if (date >= new DateTime(2021, 12, 10))
+            //    return FragmentsLosingRatesThirdNerf[rarity, league];
+            //if (date >= new DateTime(2021, 12, 5))
+            //    return FragmentsLosingRatesSecondNerf[rarity, league];
+            //if (date >= new DateTime(2021, 11, 27))
+            //    return FragmentsLosingRatesFirstNerf[rarity, league];
 
-            return FragmentsLosingRates[rarity, league];
+            //return FragmentsLosingRates[(int)rarity, league];
+
+            switch (rarity)
+            {
+                case Rarity.NORMAL:
+                    return 10 + 0.25 * (level - 1);
+                case Rarity.RARE:
+                    return 20 + 1 * (level - 1);
+                case Rarity.SUPER_RARE:
+                    return 32 + 2 * (level - 1);
+                case Rarity.SUPER_SUPER_RARE:
+                    return 50 + 4.5 + (level - 1);
+                default:
+                    return 0;
+            }
         }
 
-        public static double GetMatchWinningRate(int rarity)
+        public static double GetMatchWinningRate(Rarity rarity)
         {
-            return MatchWinningRates[rarity];
+            return MatchWinningRates[(int)rarity];
         }
 
         public static int GetWinningExperience()

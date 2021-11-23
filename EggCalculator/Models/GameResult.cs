@@ -10,7 +10,7 @@ namespace EggCalculator.Models
     {
         public int MetamonLevelUp { get; set; }
         public int MetamonLeagueUp { get; set; }
-        public int Fragments { get; set; }
+        public double Fragments { get; set; }
         public int MatchCost { get; set; }
         public int PotionCost { get; set; }
         public int MatchCount { get; set; }

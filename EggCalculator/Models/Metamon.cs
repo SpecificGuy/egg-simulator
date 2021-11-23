@@ -39,19 +39,19 @@ namespace EggCalculator.Models
             League = League.APPRENTICE;
         }
 
-        public int PlayMatch (DateTime date)
+        public double PlayMatch (DateTime date)
         {
             Random rand = new Random();
             double matchResult = rand.NextDouble();
-            int fragments;
+            double fragments;
 
-            if (matchResult < Rates.GetMatchWinningRate((int)Rarity))  //metamon won the game
+            if (matchResult < Rates.GetMatchWinningRate(Rarity))  //metamon won the game
             {
-                fragments = Rates.GetWinningFragments((int)Rarity, Level, date);
+                fragments = Rates.GetWinningFragments(Rarity, Level, date);
                 GainExperience(Rates.GetWinningExperience());
             } else
             {
-                fragments = Rates.GetLosingFragments((int)Rarity, Level, date);
+                fragments = Rates.GetLosingFragments(Rarity, Level, date);
                 GainExperience(Rates.GetLosingExperience());
             }
 
@@ -60,14 +60,14 @@ namespace EggCalculator.Models
 
         private void GainExperience (int exp)
         {
-            if (Experience + exp < 100)
+            if (Experience + exp < ExperienceNeededForLevelUp() + Rates.ExperienceOffset)
                 Experience += exp;
             else
-                Experience = 100;
+                Experience = ExperienceNeededForLevelUp() + Rates.ExperienceOffset;
         }
-        private void ResetExperience ()
+        private void ConsumeExperience()
         {
-            Experience = 0;
+            Experience = Experience - ExperienceNeededForLevelUp();
         }
 
         public bool LevelUp()
@@ -76,16 +76,21 @@ namespace EggCalculator.Models
             {
                 Level += 1;
                 League = GetLeague();
-                ResetExperience();
+                ConsumeExperience();
                 return true;
             }
 
             return false;
         }
 
+        public int ExperienceNeededForLevelUp()
+        {
+            return Rates.BaseExperience + (Level - 1) * 5;
+        }
+
         public bool CanLevelUp()
         {
-            return Experience >= Rates.ExperienceLimit && (Level + 1) <= 60;
+            return Experience >= ExperienceNeededForLevelUp() && (Level + 1) <= 60; //Update from 
         }
         public League GetLeague()
         {

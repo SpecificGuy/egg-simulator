@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock x:Name="GetResult" Text="None"></TextBlock>
+        <TextBlock x:Name="GetResult" Text="Enough donations will allow further developments, even price tracking on the market!"></TextBlock>
     </Grid>
 </UserControl>

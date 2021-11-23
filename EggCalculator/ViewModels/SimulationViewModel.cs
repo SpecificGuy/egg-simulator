@@ -122,6 +122,43 @@ namespace EggCalculator.ViewModels
             }
         }
 
+        public Simulation SelectedSimulation
+        {
+            get { return selectedSimulation; }
+            set
+            {
+                selectedSimulation = value;
+                OnPropertyChanged("SelectedSimulation");
+            }
+        }
+
+        public SimulationViewModel(CalendarMonth c)
+        {
+            calendar = c;
+            DateTime actualDate = DateTime.Now.Date;
+
+            StartingSimulation = new Simulation
+            {
+                DateFrom = actualDate,
+                DateTo = actualDate.AddMinutes(1),
+                Label = "Simulation",
+                AccountState = new AccountState
+                {
+                    RacaBalance = 330000,
+                    EggBalance = 0,
+                    FragmentBalance = 872,
+                    PotionBalance = 0,
+                    YellowDiamondBalance = 0,
+                    VioletDiamondBalance = 0,
+                    BlackDiamondBalance = 0,
+                    Metamons = new ObservableCollection<Metamon>()
+                }
+            };
+
+            StartingSimulation.AccountState.Metamons.Add(new Metamon(Rarity.NORMAL, 1, "Metamon", 100));
+            calendar.CalendarEventDoubleClickedEvent += Calendar_CalendarEventDoubleClickedEvent;
+        }
+
         internal void Simulate(DateTime? dateFrom)
         {
             int eventIndex = Events.IndexOf(Events.Find(x => x.DateFrom.Value.Equals(dateFrom.Value.AddDays(1))));
@@ -196,41 +233,7 @@ namespace EggCalculator.ViewModels
             }
         }
 
-        public Simulation SelectedSimulation
-        {
-            get { return selectedSimulation; }
-            set { selectedSimulation = value;
-                OnPropertyChanged("SelectedSimulation");
-            }
-        }
-
-        public SimulationViewModel(CalendarMonth c)
-        {
-            calendar = c;
-            DateTime actualDate = DateTime.Now.Date;
-
-            StartingSimulation = new Simulation
-            {
-                DateFrom = actualDate,
-                DateTo = actualDate.AddMinutes(1),
-                Label = "Simulation",
-                AccountState = new AccountState
-                {
-                    RacaBalance = 330000,
-                    EggBalance = 0,
-                    FragmentBalance = 872,
-                    PotionBalance = 0,
-                    YellowDiamondBalance = 0,
-                    VioletDiamondBalance = 0,
-                    BlackDiamondBalance = 0,
-                    Metamons = new ObservableCollection<Metamon>()
-                }
-            };
-
-            StartingSimulation.AccountState.Metamons.Add(new Metamon(Rarity.NORMAL, 1, "Metamon", 100));
-            calendar.CalendarEventDoubleClickedEvent += Calendar_CalendarEventDoubleClickedEvent;
-        }
-
+  
         private void ResetCalendar()
         {
             Events = new List<ICalendarEvent>();

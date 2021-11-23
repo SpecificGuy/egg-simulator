@@ -13,7 +13,7 @@ namespace EggCalculator.Models
     public class AccountState
     {
         public int RacaBalance { get; set; }
-        public int FragmentBalance { get; set; }
+        public double FragmentBalance { get; set; }
         public int PotionBalance { get; set; }
         public int YellowDiamondBalance { get; set; }
         public int VioletDiamondBalance { get; set; }

@@ -101,10 +101,10 @@
                 <TextBlock Text="Match Limit"></TextBlock>
                 <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MatchLimit, Mode=TwoWay}"></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <!--<StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Experience Limit"></TextBlock>
                 <TextBox Text="{Binding ElementName=UserControl, Path=Rates.ExperienceLimit, Mode=TwoWay}"></TextBox>
-            </StackPanel>
+            </StackPanel>-->
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Egg Fragment Quantity"></TextBlock>
                 <TextBox Text="{Binding ElementName=UserControl, Path=Rates.EggFragmentQuantity, Mode=TwoWay}"></TextBox>
