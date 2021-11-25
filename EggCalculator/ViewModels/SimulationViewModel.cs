@@ -149,14 +149,14 @@ namespace EggCalculator.ViewModels
                     FragmentBalance = 872,
                     PotionBalance = 0,
                     YellowDiamondBalance = 0,
-                    VioletDiamondBalance = 0,
+                    PurpleDiamondBalance = 0,
                     BlackDiamondBalance = 0,
                     Metamons = new ObservableCollection<Metamon>()
                 }
             };
 
             StartingSimulation.AccountState.Metamons.Add(new Metamon(Rarity.NORMAL, 1, "Metamon", 100));
-            calendar.CalendarEventDoubleClickedEvent += Calendar_CalendarEventDoubleClickedEvent;
+            calendar.CalendarDayMouseLeftClickedEvent += Calendar_CalendarEventDoubleClickedEvent;
         }
 
         internal void Simulate(DateTime? dateFrom)

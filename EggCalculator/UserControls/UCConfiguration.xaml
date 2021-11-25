@@ -197,5 +197,8 @@
                 <TextBox Text="{Binding ElementName=UserControl, Path=Rates.BlackDiamondPrice, Mode=TwoWay}"></TextBox>
             </StackPanel>
         </StackPanel>
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <local:UCMetamon Metamon="{Binding ElementName=MetamonGrid, Path=SelectedValue}"></local:UCMetamon>
+        </DockPanel>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
 ﻿using EggCalculator.Constants;
+using EggCalculator.Utility;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,15 +10,70 @@ using WPF.EventCalendar;
 
 namespace EggCalculator.Models
 {
-    public class Simulation : ICalendarEvent
+    public class Simulation : NotifyPropertyChanged, ICalendarEvent
     {
-        public DateTime? DateFrom { get; set; }
-        public DateTime? DateTo { get; set; }
-        public string Label { get; set; }
-        public AccountState AccountState { get; set; }
-        public DailyResult DailyResult { get; set; }
-        public GameResult GameResult { get; set; }
+        private DateTime? dateFrom;
+
+        public DateTime? DateFrom
+        {
+            get { return dateFrom; }
+            set { dateFrom = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private DateTime? dateTo;
+
+        public DateTime? DateTo
+        {
+            get { return dateTo; }
+            set { dateTo = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string label;
+
+        public string Label
+        {
+            get { return label; }
+            set { label = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private AccountState accountState;
+
+        public AccountState AccountState
+        {
+            get { return accountState; }
+            set { accountState = value;
+                OnPropertyChanged("AccountState");
+            }
+        }
+
+        private DailyResult dailyResult;
+
+        public DailyResult DailyResult
+        {
+            get { return dailyResult; }
+            set { dailyResult = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private GameResult gameResult;
+
+        public GameResult GameResult
+        {
+            get { return gameResult; }
+            set { gameResult = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ObservableCollection<String> Logs { get; set; } = new ObservableCollection<String>();
+        public bool MainEvent { get; set; } = false;
 
         public Simulation()
         {

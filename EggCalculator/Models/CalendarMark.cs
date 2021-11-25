@@ -12,5 +12,6 @@ namespace EggCalculator.Models
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
         public string Label { get; set; }
+        public bool MainEvent { get; set; } = false;
     }
 }

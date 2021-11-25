@@ -4,82 +4,169 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EggCalculator.UserControls"
+             xmlns:model="clr-namespace:EggCalculator.Models"
              mc:Ignorable="d" 
              x:Name="UserControl"
              d:DesignHeight="800" d:DesignWidth="200">
     <UserControl.Resources>
         <Style x:Key="Label" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         </Style>
         <Style x:Key="Content" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+            <Setter Property="FontSize" Value="14" />
         </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="350"></RowDefinition>
-            <RowDefinition Height="250"></RowDefinition>
+            <RowDefinition Height="400"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="250"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock Style="{StaticResource Label}" Text="Date"></TextBlock>
-                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DateFrom}"></TextBlock>
+        <DockPanel Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="65"></RowDefinition>
+                </Grid.RowDefinitions>
 
-                <TextBlock Style="{StaticResource Label}" Text="Raca Balance"></TextBlock>
-                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.RacaBalance}"></TextBlock>
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <TextBlock Style="{StaticResource Label}" Text="Date"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DateFrom}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <TextBlock Style="{StaticResource Label}" Text="Raca Balance"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.RacaBalance }"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="0">
+                    <TextBlock Style="{StaticResource Label}"  Text="Fragment Balance"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.FragmentBalance}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Grid.Column="0">
+                    <TextBlock Style="{StaticResource Label}"  Text="Egg Balance"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.EggBalance}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Grid.Column="0">
+                    <TextBlock Style="{StaticResource Label}"  Text="Raca Total Revenue"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.RacaRevenue}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="5" Grid.Column="0">
+                    <TextBlock Style="{StaticResource Label}"  Text="Total Metamon"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.Metamons.Count}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="6" Grid.Column="0">
+                    <TextBlock Style="{StaticResource Label}" Text="Level Ups"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MetamonLevelUp}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <TextBlock Style="{StaticResource Label}" Text="League Ups"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MetamonLeagueUp}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBlock Style="{StaticResource Label}"  Text="Daily Fragments"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.Fragments}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBlock Style="{StaticResource Label}"  Text="Matches played"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MatchCount}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Grid.Column="1">
+                    <TextBlock Style="{StaticResource Label}"  Text="Matches cost"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MatchCost}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Grid.Column="1">
+                    <TextBlock Style="{StaticResource Label}"  Text="Eggs Minted"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.EggsMinted}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="5" Grid.Column="1">
+                    <TextBlock Style="{StaticResource Label}"  Text="Gross Daily Cost"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.GrossDailyCost}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="6" Grid.Column="1">
+                    <TextBlock Style="{StaticResource Label}"  Text="Gross Daily Gain"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.GrossDailyGain}"></TextBlock>
+                </StackPanel>
+                <DockPanel Grid.Row="7" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Style="{StaticResource Label}" Grid.Row="0" Grid.Column="0" Text="Potions"></TextBlock>
+                        <TextBlock Style="{StaticResource Label}" Grid.Row="0" Grid.Column="1" Text="Yellow Diamond"></TextBlock>
+                        <TextBlock Style="{StaticResource Label}" Grid.Row="0" Grid.Column="2" Text="Purple Diamond"></TextBlock>
+                        <TextBlock Style="{StaticResource Label}" Grid.Row="0" Grid.Column="3" Text="Black Diamond"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0"  Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.PotionBalance}"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1"  Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.YellowDiamondBalance}"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="2"  Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.PurpleDiamondBalance}"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="3"  Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.BlackDiamondBalance}"></TextBlock>
+                    </Grid>
+                </DockPanel>
 
-                <TextBlock Style="{StaticResource Label}"  Text="Fragment Balance"></TextBlock>
-                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.FragmentBalance}"></TextBlock>
-
-                <TextBlock Style="{StaticResource Label}"  Text="Potion Balance"></TextBlock>
-                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.PotionBalance}"></TextBlock>
-
-                <TextBlock Style="{StaticResource Label}"  Text="Egg Balance"></TextBlock>
-                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.EggBalance}"></TextBlock>
-
-                <TextBlock Style="{StaticResource Label}"  Text="Raca Total Revenue"></TextBlock>
-                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.RacaRevenue}"></TextBlock>
-
-                <TextBlock Style="{StaticResource Label}"  Text="Total Metamon"></TextBlock>
-                <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.Metamons.Count}"></TextBlock>
-            </StackPanel>
-        <StackPanel  Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource Label}" Text="Level Ups"></TextBlock>
-            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MetamonLevelUp}"></TextBlock>
-
-            <TextBlock Style="{StaticResource Label}" Text="League Ups"></TextBlock>
-            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MetamonLeagueUp}"></TextBlock>
-
-            <TextBlock Style="{StaticResource Label}"  Text="Daily Fragments"></TextBlock>
-            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.Fragments}"></TextBlock>
-
-            <TextBlock Style="{StaticResource Label}"  Text="Matches played"></TextBlock>
-            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MatchCount}"></TextBlock>
-            
-            <TextBlock Style="{StaticResource Label}"  Text="Matches cost"></TextBlock>
-            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MatchCost}"></TextBlock>
-            
-            <TextBlock Style="{StaticResource Label}"  Text="Eggs Minted"></TextBlock>
-            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.EggsMinted}"></TextBlock>
-
-            <TextBlock Style="{StaticResource Label}"  Text="Gross Daily Cost"></TextBlock>
-            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.GrossDailyCost}"></TextBlock>
-
-            <TextBlock Style="{StaticResource Label}"  Text="Gross Daily Gain"></TextBlock>
-            <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.GrossDailyGain}"></TextBlock>
-        </StackPanel>
-        
-        <DockPanel Grid.Row="1" Grid.ColumnSpan="2">
+                <DockPanel Grid.Row="8" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Column="0" Grid.Row="0" Content="Mint Eggs" Command="{Binding ElementName=UserControl, Path=MintEggsCommand}"></Button>
+                        <Button Grid.Column="1" Grid.Row="0" Content="Sell Eggs" Command="{Binding ElementName=UserControl, Path=SellEggsCommand}"></Button>
+                        <Button x:Name="addRacaButton" Grid.Column="3" Grid.Row="0" Content="Add Raca" Command="{Binding ElementName=UserControl, Path=AddRacaCommand}"></Button>
+                        <Button Grid.Column="0" Grid.Row="1" Content="Buy Potion" Command="{Binding ElementName=UserControl, Path=BuyPotionsCommand}" CommandParameter="{x:Static model:Rarity.NORMAL}"></Button>
+                        <Button Grid.Column="1" Grid.Row="1" Content="Buy Yellow Diamond" Command="{Binding ElementName=UserControl, Path=BuyPotionsCommand}"  CommandParameter="{x:Static model:Rarity.RARE}"></Button>
+                        <Button Grid.Column="2" Grid.Row="1" Content="Buy Purple Diamond" Command="{Binding ElementName=UserControl, Path=BuyPotionsCommand}" CommandParameter="{x:Static model:Rarity.SUPER_RARE}"></Button>
+                        <Button Grid.Column="3" Grid.Row="1" Content="Buy Black Diamond" Command="{Binding ElementName=UserControl, Path=BuyPotionsCommand}"  CommandParameter="{x:Static model:Rarity.SUPER_SUPER_RARE}"></Button>
+                    </Grid>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+        <Popup Margin="10,10,0,13" Name="racaQuantityPopup" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" PlacementTarget="{Binding ElementName=addRacaButton}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <TextBox Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding ElementName=UserControl, Path=RacaQuantity, Mode=TwoWay}"></TextBox>
+                <Button Grid.Row="1" Grid.Column="0" Content="Add Raca" Command="{Binding ElementName=UserControl, Path=ConfirmCommand}"></Button>
+                <Button Grid.Row="1" Grid.Column="1" Content="Cancel" Command="{Binding ElementName=UserControl, Path=CancelCommand}"></Button>
+            </Grid>
+        </Popup>
+        <DockPanel Grid.Row="1">
             <ListView x:Name="MetamonGrid" ItemsSource="{Binding ElementName=UserControl, Path=Simulation.AccountState.Metamons}" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.View>
                     <GridView>
@@ -91,7 +178,7 @@
                 </ListView.View>
             </ListView>
         </DockPanel>
-        <DockPanel Grid.Row="2" Grid.ColumnSpan="2">
+        <DockPanel Grid.Row="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -108,12 +195,13 @@
                 <Button Grid.Column="1" Content="Add R Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="1"></Button>
                 <Button Grid.Column="2" Content="Add SR Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="2"></Button>
                 <Button Grid.Column="3" Content="Add SSR Metamon" Command="{Binding ElementName=UserControl, Path=AddMetamonCommand}" CommandParameter="3"></Button>
-                <Button Grid.ColumnSpan="4" Grid.Row="2" Content="Remove Metamon" Command="{Binding ElementName=UserControl, Path=DeleteMetamonCommand}" CommandParameter="{Binding ElementName=MetamonGrid, Path=SelectedIndex}"></Button>
+                <Button Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="0" Content="Remove Metamon" Command="{Binding ElementName=UserControl, Path=DeleteMetamonCommand}" CommandParameter="{Binding ElementName=MetamonGrid, Path=SelectedIndex}"></Button>
+                <Button Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="2" Content="Level Up Metamon" Command="{Binding ElementName=UserControl, Path=LevelUpCommand}" CommandParameter="{Binding ElementName=MetamonGrid, Path=SelectedIndex}"></Button>
 
             </Grid>
 
         </DockPanel>
-        <DockPanel Grid.Row="3" Grid.ColumnSpan="2">
+        <DockPanel Grid.Row="3">
             <ListView ItemsSource="{Binding ElementName=UserControl, Path=Simulation.Logs}">
                 <ListView.View>
                     <GridView>

@@ -10,16 +10,88 @@ using WPF.EventCalendar;
 
 namespace EggCalculator.Models
 {
-    public class AccountState
+    public class AccountState : NotifyPropertyChanged
     {
-        public int RacaBalance { get; set; }
-        public double FragmentBalance { get; set; }
-        public int PotionBalance { get; set; }
-        public int YellowDiamondBalance { get; set; }
-        public int VioletDiamondBalance { get; set; }
-        public int BlackDiamondBalance { get; set; }
-        public int EggBalance { get; set; }
-        public int RacaRevenue { get; set; }
+        private int racaBalance;
+
+        public int RacaBalance
+        {
+            get { return racaBalance; }
+            set { racaBalance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double fragmentBalance;
+
+        public double FragmentBalance
+        {
+            get { return fragmentBalance; }
+            set { fragmentBalance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int potionBalance;
+
+        public int PotionBalance
+        {
+            get { return potionBalance; }
+            set { potionBalance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int yellowDiamondBalance;
+
+        public int YellowDiamondBalance
+        {
+            get { return yellowDiamondBalance; }
+            set { yellowDiamondBalance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int purpleDiamondBalance;
+
+        public int PurpleDiamondBalance
+        {
+            get { return purpleDiamondBalance; }
+            set { purpleDiamondBalance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int blackDiamondBalance;
+
+        public int BlackDiamondBalance
+        {
+            get { return blackDiamondBalance; }
+            set { blackDiamondBalance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int eggBalance;
+
+        public int EggBalance
+        {
+            get { return eggBalance; }
+            set { eggBalance = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int racaRevenue;
+
+        public int RacaRevenue
+        {
+            get { return racaRevenue; }
+            set { racaRevenue = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ObservableCollection<Metamon> Metamons { get; set; }
         public AccountState Copy()
         {
@@ -29,7 +101,7 @@ namespace EggCalculator.Models
                 FragmentBalance = FragmentBalance.DeepClone(),
                 PotionBalance = PotionBalance.DeepClone(),
                 YellowDiamondBalance = YellowDiamondBalance.DeepClone(),
-                VioletDiamondBalance = VioletDiamondBalance.DeepClone(),
+                PurpleDiamondBalance = PurpleDiamondBalance.DeepClone(),
                 BlackDiamondBalance = BlackDiamondBalance.DeepClone(),
                 EggBalance = EggBalance.DeepClone(),
                 RacaRevenue = RacaRevenue.DeepClone(),
@@ -51,7 +123,7 @@ namespace EggCalculator.Models
                     YellowDiamondBalance++;
                     break;
                 case Rarity.SUPER_RARE:
-                    VioletDiamondBalance++;
+                    PurpleDiamondBalance++;
                     break;
                 case Rarity.SUPER_SUPER_RARE:
                     BlackDiamondBalance++;
@@ -79,8 +151,8 @@ namespace EggCalculator.Models
                         return false;
                     break;
                 case Rarity.SUPER_RARE:
-                    if (VioletDiamondBalance > 0)
-                        VioletDiamondBalance--;
+                    if (PurpleDiamondBalance > 0)
+                        PurpleDiamondBalance--;
                     else
                         return false;
                     break;
@@ -105,7 +177,7 @@ namespace EggCalculator.Models
                 case Rarity.RARE:
                     return YellowDiamondBalance;
                 case Rarity.SUPER_RARE:
-                    return VioletDiamondBalance;
+                    return PurpleDiamondBalance;
                 case Rarity.SUPER_SUPER_RARE:
                     return BlackDiamondBalance;
                 default:

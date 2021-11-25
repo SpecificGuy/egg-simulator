@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EggCalculator.Utility
 {
-    public class NotifyPropertyChanged
+    public partial class NotifyPropertyChanged : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

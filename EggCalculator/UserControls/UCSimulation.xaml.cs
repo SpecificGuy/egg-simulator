@@ -4,7 +4,9 @@ using EggCalculator.Utility;
 using EggCalculator.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,9 +24,19 @@ namespace EggCalculator.UserControls
     /// <summary>
     /// Interaction logic for UCSimulation.xaml
     /// </summary>
-    public partial class UCSimulation : UserControl
+    public partial class UCSimulation : UserControl, INotifyPropertyChanged
     {
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+        private int racaQuantity;
 
+        public int RacaQuantity
+        {
+            get { return racaQuantity; }
+            set { racaQuantity = value; 
+                OnPropertyChanged();
+            }
+        }
 
         public Simulation Simulation
         {
@@ -65,6 +77,30 @@ namespace EggCalculator.UserControls
         private void Resimulate()
         {
             ((SimulationViewModel)DataContext).Simulate(Simulation.DateFrom);
+        }
+
+        private void LevelUp(int param)
+        {
+            Metamon m = Simulation.AccountState.Metamons.ElementAt((int)param);
+
+            if (Simulation.AccountState.DecreasePotionBalance(m.Rarity))
+                m.LevelUp();
+        }
+
+        private void BuyPotions(Rarity rarity)
+        {
+            Simulation.BuyPotions(rarity);
+            UpdateLayout();
+        }
+
+        private void SellEggs()
+        {
+            Simulation.SellEggs();
+        }
+
+        private void MintEggs()
+        {
+            Simulation.MintEggs();
         }
 
         #region commands
@@ -121,6 +157,138 @@ namespace EggCalculator.UserControls
                 }
                 return deleteMetamonCommand;
             }
+        }
+
+        private ICommand mintEggsCommand;
+
+        public ICommand MintEggsCommand
+        {
+            get
+            {
+                if (mintEggsCommand == null)
+                {
+                    mintEggsCommand = new RelayCommand(
+                        param => this.MintEggs(),
+                        param => Simulation?.AccountState?.FragmentBalance >= Rates.EggFragmentQuantity
+                    );
+                }
+                return mintEggsCommand;
+            }
+        }
+
+        private ICommand sellEggsCommand;
+
+        public ICommand SellEggsCommand
+        {
+            get
+            {
+                if (sellEggsCommand == null)
+                {
+                    sellEggsCommand = new RelayCommand(
+                        param => this.SellEggs(),
+                        param => Simulation?.AccountState?.EggBalance > 0
+                    );
+                }
+                return sellEggsCommand;
+            }
+        }
+
+        private ICommand buyPotionsCommand;
+
+        public ICommand BuyPotionsCommand
+        {
+            get
+            {
+                if (buyPotionsCommand == null)
+                {
+                    buyPotionsCommand = new RelayCommand(
+                        param => this.BuyPotions((Rarity)param),
+                        param => Rates.GetPotionPrice((Rarity)param) < Simulation?.AccountState?.RacaBalance
+                    );
+                }
+                return buyPotionsCommand;
+            }
+        }
+
+
+        private ICommand addRacaCommand;
+
+        public ICommand AddRacaCommand
+        {
+            get
+            {
+                if (addRacaCommand == null)
+                {
+                    addRacaCommand = new RelayCommand(
+                        param => racaQuantityPopup.IsOpen = true,
+                        param => Simulation is not null
+                    );
+                }
+                return addRacaCommand;
+            }
+        }
+
+
+        private ICommand levelUpCommand;
+
+        public ICommand LevelUpCommand
+        {
+            get
+            {
+                if (levelUpCommand == null)
+                {
+                    levelUpCommand = new RelayCommand(
+                        param => this.LevelUp((int)param),
+                        param => param is not null && (int)param != -1 
+                                    && Simulation.AccountState.Metamons.ElementAt((int)param).CanLevelUp() 
+                                    && Simulation.AccountState.GetPotionBalance(Simulation.AccountState.Metamons.ElementAt((int)param).Rarity) > 0 
+                    );
+                }
+                return levelUpCommand;
+            }
+        }
+
+        private ICommand cancelCommand;
+
+        public ICommand CancelCommand
+        {
+            get
+            {
+                if (cancelCommand == null)
+                {
+                    cancelCommand = new RelayCommand(
+                        param => racaQuantityPopup.IsOpen = false,
+                        param => true
+                    );
+                }
+                return cancelCommand;
+            }
+        }
+
+        private ICommand confirmCommand;
+
+        public ICommand ConfirmCommand
+        {
+            get
+            {
+                if (confirmCommand == null)
+                {
+                    confirmCommand = new RelayCommand(
+                        param => { 
+                            Simulation.AccountState.RacaBalance += RacaQuantity;
+                            RacaQuantity = 0;
+                            racaQuantityPopup.IsOpen = false;
+                        },
+                        param => true
+                    );
+                }
+                return confirmCommand;
+            }
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }
