@@ -24,7 +24,7 @@ namespace EggCalculator.ViewModels
         private Rates rates = new();
         private bool metamonAutoBuy = true;
         private Rarity metamonAutoBuyRarity = Rarity.NORMAL;
-        private bool autoRevenue = true;
+        private bool autoRevenue = false;
         private bool autoSellEggs = true;
         private bool autoMintEggs = true;
         private bool autoBuyPotions = true;
@@ -156,7 +156,7 @@ namespace EggCalculator.ViewModels
             };
 
             StartingSimulation.AccountState.Metamons.Add(new Metamon(Rarity.NORMAL, 1, "Metamon", 100));
-            calendar.CalendarDayMouseLeftClickedEvent += Calendar_CalendarEventDoubleClickedEvent;
+            calendar.CalendarDayMouseLeftClickedEvent += Calendar_CalendarDayMouseLeftClickedEvent;
         }
 
         internal void Simulate(DateTime? dateFrom)
@@ -175,7 +175,7 @@ namespace EggCalculator.ViewModels
             for (int i = 0; i < SimulationDays; i++)
             {
                 int metamonQuantity = 0;
-                int racaSold = 0;
+                long racaSold = 0;
                 int eggQuantity = 0;
 
                 actualSimulation = InitializeNextSimulation(actualSimulation);
@@ -265,7 +265,7 @@ namespace EggCalculator.ViewModels
             OnSimulationEnd?.Invoke(this, Events);
         }
 
-        private void Calendar_CalendarEventDoubleClickedEvent(object sender, CalendarEventView e)
+        private void Calendar_CalendarDayMouseLeftClickedEvent(object sender, CalendarEventView e)
         {
             if (e.DataContext is Simulation calendarEvent)
             {

@@ -12,7 +12,7 @@
             <Style.Triggers>
                 <DataTrigger Binding="{Binding ElementName=calendarDay, Path=IsSelected}" Value="True">
                     <Setter Property="BorderThickness" Value="3,3,3,3"></Setter>
-                    <Setter Property="BorderBrush" Value="LightBlue"></Setter>
+                    <Setter Property="BorderBrush" Value="DarkGreen"></Setter>
                 </DataTrigger>
             </Style.Triggers>
         </Style>

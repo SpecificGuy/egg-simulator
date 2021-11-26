@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="UserControls\UCChartPlotter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserControls\UCCharts.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ResourceDictionaries\BaseDictonary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\UCChartPlotter.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControls\UCCharts.xaml">

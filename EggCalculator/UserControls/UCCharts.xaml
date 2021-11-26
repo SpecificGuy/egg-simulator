@@ -4,11 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EggCalculator.UserControls"
+             xmlns:conv="clr-namespace:EggCalculator.Converter"
              xmlns:d3="clr-namespace:InteractiveDataDisplay.WPF;assembly=InteractiveDataDisplay.WPF"
+             x:Name="UserControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <UserControl.Resources>
+        <conv:VisibilityToCheckedConverter x:Key="VisibilityToCheckedConverter"/>
+    </UserControl.Resources>
+    <Grid x:Name="ChartGrid">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -17,20 +23,43 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <d3:Chart Grid.Row="0" Grid.Column="0" BottomTitle="Argument" LeftTitle="Function">
-            <d3:LineGraph x:Name="EggChart" Stroke="DarkOrange" Description="Eggs" StrokeThickness="3"/>
+        <!--<d3:Chart Grid.Row="0" Grid.ColumnSpan="2">
+            <d3:Chart.Title>
+                <TextBlock HorizontalAlignment="Center" FontSize="18" Margin="0,5,0,5" Text="DAFR"></TextBlock>
+            </d3:Chart.Title>
+            <d3:Chart.LegendContent>
+                <d3:LegendItemsPanel>
+                    <d3:LegendItemsPanel.Resources>
+                        <DataTemplate x:Key="InteractiveDataDisplay.WPF.LineGraph">
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding Path=Visibility, Converter={StaticResource VisibilityToCheckedConverter}, Mode=TwoWay}"/>
+                                <Line Width="15" Height="15" X1="0" Y1="0" X2="15" Y2="15" Stroke="{Binding Path=Stroke}" StrokeThickness="2"/>
+                                <TextBlock Margin="5,0,0,0" Text="{Binding Path=Description}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </d3:LegendItemsPanel.Resources>
+                </d3:LegendItemsPanel>
+            </d3:Chart.LegendContent>
+            <Grid Name="GeneralChart"/>
         </d3:Chart>
-        <d3:Chart Grid.Row="0" Grid.Column="1" BottomTitle="Argument" LeftTitle="Function">
-            <d3:LineGraph x:Name="FragmentChart" Description="Fragments" Stroke="DarkGreen" StrokeThickness="3"/>
-        </d3:Chart>
-        <d3:Chart Grid.Row="1" Grid.Column="0" BottomTitle="Argument" LeftTitle="Function">
-            <d3:LineGraph x:Name="MetamonCountChart" Description="Metamon" Stroke="DarkBlue" StrokeThickness="3"/>
-        </d3:Chart>
-        <d3:Chart Grid.Row="1" Grid.Column="1" BottomTitle="Argument" LeftTitle="Function">
-            <d3:LineGraph x:Name="RevenueChart" Description="Revenue" Stroke="DarkMagenta" StrokeThickness="3"/>
-        </d3:Chart>
-        <d3:Chart Grid.Row="2" Grid.Column="0" BottomTitle="Argument" LeftTitle="Function">
-            <d3:LineGraph x:Name="MatchCostChart" Description="Match Cost" Stroke="DarkRed" StrokeThickness="3"/>
-        </d3:Chart>
+        <d3:Chart Grid.Row="0" Grid.Column="2">
+            <d3:Chart.Title>
+                <TextBlock HorizontalAlignment="Center" FontSize="18" Margin="0,5,0,5" Text="Metamon Count"></TextBlock>
+            </d3:Chart.Title>
+            <d3:Chart.LegendContent>
+                <d3:LegendItemsPanel>
+                    <d3:LegendItemsPanel.Resources>
+                        <DataTemplate x:Key="InteractiveDataDisplay.WPF.LineGraph">
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding Path=Visibility, Converter={StaticResource VisibilityToCheckedConverter}, Mode=TwoWay}"/>
+                                <Line Width="15" Height="15" X1="0" Y1="0" X2="15" Y2="15" Stroke="{Binding Path=Stroke}" StrokeThickness="2"/>
+                                <TextBlock Margin="5,0,0,0" Text="{Binding Path=Description}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </d3:LegendItemsPanel.Resources>
+                </d3:LegendItemsPanel>
+            </d3:Chart.LegendContent>
+            <Grid Name="MetamonCountChart"/>
+            </d3:Chart>-->
     </Grid>
 </UserControl>

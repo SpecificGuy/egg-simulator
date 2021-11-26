@@ -62,7 +62,7 @@ namespace EggCalculator.Constants
             }
         }
 
-        private static int normalMetamonPrice = 540000;
+        private static int normalMetamonPrice = 700000;
 
         public static int NormalMetamonPrice
         {
@@ -72,7 +72,7 @@ namespace EggCalculator.Constants
             }
         }
 
-        private static int rareMetamonPrice = 4000000;
+        private static int rareMetamonPrice = 5200000;
 
         public static int RareMetamonPrice
         {
@@ -82,7 +82,7 @@ namespace EggCalculator.Constants
             }
         }
 
-        private static int superRareMetamonPrice = 60000000;
+        private static int superRareMetamonPrice = 40000000;
 
         public static int SuperRareMetamonPrice
         {
@@ -102,7 +102,7 @@ namespace EggCalculator.Constants
             }
         }
 
-        private static int potionPrice = 17000;
+        private static int potionPrice = 13000;
 
         public static int PotionPrice
         {
@@ -112,7 +112,7 @@ namespace EggCalculator.Constants
             }
         }
 
-        private static int yellowDiamondPrice = 54000;
+        private static int yellowDiamondPrice = 52000;
 
         public static int YellowDiamondPrice
         {
@@ -124,7 +124,7 @@ namespace EggCalculator.Constants
             }
         }
 
-        private static int violetDiamondPrice = 100000;
+        private static int violetDiamondPrice = 310000;
 
         public static int VioletDiamondPrice
         {
@@ -300,7 +300,7 @@ namespace EggCalculator.Constants
         {
             return MatchRacaCost[GetLeague(level)];
         }
-        public static double GetWinningFragments(Rarity rarity, int level, DateTime date)
+        public static double GetWinningFragments(Rarity rarity, int level)
         {
             //int league = GetLeague(level);
             //if (date >= new DateTime(2021, 12, 25))
@@ -333,7 +333,7 @@ namespace EggCalculator.Constants
             //return FragmentsWinningRates[(int)rarity, league];
         }
 
-        public static double GetLosingFragments(Rarity rarity, int level, DateTime date)
+        public static double GetLosingFragments(Rarity rarity, int level)
         {
             //int league = GetLeague(level);
             //if (date >= new DateTime(2021, 12, 25))

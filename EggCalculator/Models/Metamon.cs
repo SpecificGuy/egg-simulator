@@ -1,4 +1,5 @@
 ﻿using EggCalculator.Constants;
+using EggCalculator.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +25,29 @@ namespace EggCalculator.Models
     }
 
     [Serializable]
-    public class Metamon
+    public class Metamon : NotifyPropertyChanged
     {
         public Rarity Rarity { get; set; }
-        public int Level { get; set; }
-        public int Experience { get; set; }
+        private int level;
+
+        public int Level
+        {
+            get { return level; }
+            set { level = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int experience;
+
+        public int Experience
+        {
+            get { return experience; }
+            set { experience = value;
+                OnPropertyChanged();
+
+            }
+        }
         public League League { get; set; }
 
         public Metamon(Rarity rarity, int level, string label, int experience = 0)
@@ -39,7 +58,7 @@ namespace EggCalculator.Models
             League = League.APPRENTICE;
         }
 
-        public double PlayMatch (DateTime date)
+        public double PlayMatch ()
         {
             Random rand = new Random();
             double matchResult = rand.NextDouble();
@@ -47,36 +66,37 @@ namespace EggCalculator.Models
 
             if (matchResult < Rates.GetMatchWinningRate(Rarity))  //metamon won the game
             {
-                fragments = Rates.GetWinningFragments(Rarity, Level, date);
+                fragments = Rates.GetWinningFragments(Rarity, Level);
                 GainExperience(Rates.GetWinningExperience());
             } else
             {
-                fragments = Rates.GetLosingFragments(Rarity, Level, date);
+                fragments = Rates.GetLosingFragments(Rarity, Level);
                 GainExperience(Rates.GetLosingExperience());
             }
 
             return fragments;
         }
 
-        private void GainExperience (int exp)
+        public void GainExperience (int exp)
         {
-            if (Experience + exp < ExperienceNeededForLevelUp() + Rates.ExperienceOffset)
+            if ((Experience + exp) < ExperienceNeededForLevelUp() + Rates.ExperienceOffset)
                 Experience += exp;
             else
                 Experience = ExperienceNeededForLevelUp() + Rates.ExperienceOffset;
         }
         private void ConsumeExperience()
         {
-            Experience = Experience - ExperienceNeededForLevelUp();
+            int experienceNeeded = ExperienceNeededForLevelUp();
+            Experience = Experience - experienceNeeded;
         }
 
         public bool LevelUp()
         {
             if (CanLevelUp())
             {
+                ConsumeExperience();
                 Level += 1;
                 League = GetLeague();
-                ConsumeExperience();
                 return true;
             }
 
@@ -90,7 +110,8 @@ namespace EggCalculator.Models
 
         public bool CanLevelUp()
         {
-            return Experience >= ExperienceNeededForLevelUp() && (Level + 1) <= 60; //Update from 
+            int experienceNeeded = ExperienceNeededForLevelUp();
+            return Experience >= experienceNeeded && (Level + 1) <= 60; //Update from 
         }
         public League GetLeague()
         {

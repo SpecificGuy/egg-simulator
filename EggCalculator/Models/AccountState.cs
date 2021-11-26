@@ -12,9 +12,9 @@ namespace EggCalculator.Models
 {
     public class AccountState : NotifyPropertyChanged
     {
-        private int racaBalance;
+        private long racaBalance;
 
-        public int RacaBalance
+        public long RacaBalance
         {
             get { return racaBalance; }
             set { racaBalance = value;
@@ -82,9 +82,9 @@ namespace EggCalculator.Models
             }
         }
 
-        private int racaRevenue;
+        private long racaRevenue;
 
-        public int RacaRevenue
+        public long RacaRevenue
         {
             get { return racaRevenue; }
             set { racaRevenue = value;

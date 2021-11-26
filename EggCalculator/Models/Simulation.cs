@@ -100,7 +100,7 @@ namespace EggCalculator.Models
                     if (AccountState.RacaBalance - gr.MatchCost - Rates.GetMatchCost(metamon.Level) > 0)
                     {
                         gr.MatchCost += Rates.GetMatchCost(metamon.Level);
-                        gr.Fragments += metamon.PlayMatch(DateFrom.Value);
+                        gr.Fragments += metamon.PlayMatch();
                         gr.MatchCount++;
 
                         if (autoLevelUp && AccountState.Metamons.Count >= Rates.MetamonCountPotionBuyStart && metamon.CanLevelUp())
@@ -193,13 +193,13 @@ namespace EggCalculator.Models
 
             return 0;
         }
-        internal int GetRevenue()
+        internal long GetRevenue()
         {
             int minimumDeposit = MinimunRacaWalletDeposit();
 
             if (AccountState.Metamons.Count >= Rates.MetamonCountRevenueStart && AccountState.RacaBalance > Rates.MinimumRacaRevenue + minimumDeposit * 2)
             {
-                int calculatedRaca = AccountState.RacaBalance - minimumDeposit * 2;
+                long calculatedRaca = AccountState.RacaBalance - minimumDeposit * 2;
 
                 AccountState.RacaRevenue += calculatedRaca;
                 AccountState.RacaBalance = AccountState.RacaBalance - calculatedRaca;
