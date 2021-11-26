@@ -9,7 +9,7 @@
       "EggCalculator/1.0.0": {
         "dependencies": {
           "InteractiveDataDisplay.WPF": "1.0.0",
-          "WPF.EventCalendar": "1.0.3"
+          "WPF.EventCalendar": "1.0.0"
         },
         "runtime": {
           "EggCalculator.dll": {}
@@ -786,12 +786,9 @@
           "System.Xml.ReaderWriter": "4.0.11"
         }
       },
-      "WPF.EventCalendar/1.0.3": {
+      "WPF.EventCalendar/1.0.0": {
         "runtime": {
-          "lib/net45/WPF.EventCalendar.dll": {
-            "assemblyVersion": "1.0.3.0",
-            "fileVersion": "1.0.3.0"
-          }
+          "WPF.EventCalendar.dll": {}
         }
       }
     }
@@ -1320,12 +1317,10 @@
       "path": "system.xml.xdocument/4.0.11",
       "hashPath": "system.xml.xdocument.4.0.11.nupkg.sha512"
     },
-    "WPF.EventCalendar/1.0.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-4HRMm7tqjaihvaHDiUoq05E3UFRQoiOrsm7Em5mPoJuccMoHehIPiP+Cs2XfpSxdFfqei6ufpjRVE4fE1PYXxg==",
-      "path": "wpf.eventcalendar/1.0.3",
-      "hashPath": "wpf.eventcalendar.1.0.3.nupkg.sha512"
+    "WPF.EventCalendar/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
