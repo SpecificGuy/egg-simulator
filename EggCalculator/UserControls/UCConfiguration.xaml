@@ -36,23 +36,23 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock  Text="Raca Balance"></TextBlock>
-                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.RacaBalance, Mode=TwoWay}"></TextBox>
+                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.RacaBalance, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock   Text="Fragment Balance"></TextBlock>
-                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.FragmentBalance, Mode=TwoWay}"></TextBox>
+                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.FragmentBalance, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock   Text="Potion Balance"></TextBlock>
-                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.PotionBalance, Mode=TwoWay}"></TextBox>
+                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.PotionBalance, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock   Text="Egg Balance"></TextBlock>
-                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.EggBalance, Mode=TwoWay}"></TextBox>
+                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.EggBalance, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock   Text="Raca Total Revenue"></TextBlock>
-                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.RacaRevenue, Mode=TwoWay}"></TextBox>
+                <TextBox  Text="{Binding ElementName=UserControl, Path=Configuration.AccountState.RacaRevenue, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
         </StackPanel>
         <DockPanel Grid.Row="1" Grid.Column="0">
@@ -107,7 +107,7 @@
             </StackPanel>-->
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Egg Fragment Quantity"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.EggFragmentQuantity, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.EggFragmentQuantity, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center">
@@ -116,19 +116,19 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Minimum Raca Revenue"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MinimumRacaRevenue, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MinimumRacaRevenue, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Revenue start on metamon count"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MetamonCountRevenueStart, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MetamonCountRevenueStart, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Potion buying on metamon count"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MetamonCountPotionBuyStart, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MetamonCountPotionBuyStart, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Simulation Days"></TextBlock>
-                <TextBox Text="{Binding Path=SimulationDays, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding Path=SimulationDays, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <CheckBox IsChecked="{Binding Path=MetamonAutoBuy, Mode=TwoWay}"></CheckBox>
@@ -162,39 +162,39 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Egg Price"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.EggPrice, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.EggPrice, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Normal Metamon Price"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.NormalMetamonPrice, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.NormalMetamonPrice, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Rare Metamon Price"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.RareMetamonPrice, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.RareMetamonPrice, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Super Rare Metamon Price"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.SuperRareMetamonPrice, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.SuperRareMetamonPrice, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Super Super Rare Metamon Price"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.SuperSuperRareMetamonPrice, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.SuperSuperRareMetamonPrice, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Potion Price"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.PotionPrice, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.PotionPrice, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Yellow Diamond Price"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.YellowDiamondPrice, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.YellowDiamondPrice, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Violet Diamond Price"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.VioletDiamondPrice, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.VioletDiamondPrice, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Black Diamond Price"></TextBlock>
-                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.BlackDiamondPrice, Mode=TwoWay}"></TextBox>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.BlackDiamondPrice, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
         </StackPanel>
         <DockPanel Grid.Row="1" Grid.Column="1">

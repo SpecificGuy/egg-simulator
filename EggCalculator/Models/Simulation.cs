@@ -222,16 +222,16 @@ namespace EggCalculator.Models
         }
         internal void LogGameResult(GameResult gr)
         {
-            Logs.Add($"[FRAGMENT FARM] Gained {gr.Fragments}");
-            Logs.Add($"[URACA] Match cost {gr.MatchCost}");
+            //Logs.Add($"[FRAGMENT FARM] Gained {gr.Fragments}");
+            //Logs.Add($"[URACA] Match cost {gr.MatchCost}");
 
             if (gr.Interrupted)
                 Logs.Add($"[FUND EXPIRED] You don't have enough RACA to play");
 
             if (gr.MetamonLevelUp > 0)
-                Logs.Add($"[{gr.MetamonLevelUp} LEVELUP] Spent {gr.PotionCost} RACA for potions.");
+                Logs.Add($"[AUTO][{gr.MetamonLevelUp} LEVELUP] Spent {gr.PotionCost} RACA for potions.");
             if (gr.MetamonLeagueUp > 0)
-                Logs.Add($"[{gr.MetamonLeagueUp} LEAGUEUP] Metamons now gain more fragments.");
+                Logs.Add($"[AUTO][{gr.MetamonLeagueUp} LEAGUEUP] Metamons now gain more fragments.");
 
         }
     }

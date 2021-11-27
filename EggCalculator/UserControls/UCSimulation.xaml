@@ -53,55 +53,55 @@
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="0">
                     <TextBlock Style="{StaticResource Label}" Text="Raca Balance"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.RacaBalance }"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.RacaBalance, StringFormat=N0, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Grid.Column="0">
                     <TextBlock Style="{StaticResource Label}"  Text="Fragment Balance"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.FragmentBalance}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.FragmentBalance, StringFormat=N1, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="3" Grid.Column="0">
                     <TextBlock Style="{StaticResource Label}"  Text="Egg Balance"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.EggBalance}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.EggBalance, StringFormat=N0, ConverterCulture=de}" ></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="4" Grid.Column="0">
                     <TextBlock Style="{StaticResource Label}"  Text="Raca Total Revenue"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.RacaRevenue}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.RacaRevenue, StringFormat=N0, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="5" Grid.Column="0">
                     <TextBlock Style="{StaticResource Label}"  Text="Total Metamon"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.Metamons.Count}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.AccountState.Metamons.Count, StringFormat=N0, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="6" Grid.Column="0">
                     <TextBlock Style="{StaticResource Label}" Text="Level Ups"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MetamonLevelUp}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MetamonLevelUp, StringFormat=N0, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="0" Grid.Column="1">
                     <TextBlock Style="{StaticResource Label}" Text="League Ups"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MetamonLeagueUp}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MetamonLeagueUp, StringFormat=N0, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <TextBlock Style="{StaticResource Label}"  Text="Daily Fragments"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.Fragments}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.Fragments, StringFormat=N1, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Grid.Column="1">
                     <TextBlock Style="{StaticResource Label}"  Text="Matches played"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MatchCount}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MatchCount, StringFormat=N0, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="3" Grid.Column="1">
                     <TextBlock Style="{StaticResource Label}"  Text="Matches cost"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MatchCost}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.GameResult.MatchCost, StringFormat=N0, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="4" Grid.Column="1">
                     <TextBlock Style="{StaticResource Label}"  Text="Eggs Minted"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.EggsMinted}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.EggsMinted, StringFormat=N0, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="5" Grid.Column="1">
                     <TextBlock Style="{StaticResource Label}"  Text="Gross Daily Cost"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.GrossDailyCost}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.GrossDailyCost, StringFormat=N0, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="6" Grid.Column="1">
                     <TextBlock Style="{StaticResource Label}"  Text="Gross Daily Gain"></TextBlock>
-                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.GrossDailyGain}"></TextBlock>
+                    <TextBlock Style="{StaticResource Content}" Text="{Binding ElementName=UserControl, Path=Simulation.DailyResult.GrossDailyGain, StringFormat=N0, ConverterCulture=de}"></TextBlock>
                 </StackPanel>
                 <DockPanel Grid.Row="7" Grid.ColumnSpan="2">
                     <Grid>
@@ -205,7 +205,7 @@
             <ListView ItemsSource="{Binding ElementName=UserControl, Path=Simulation.Logs}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding}" Header="Description" Width="500"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding}" Header="Logs" Width="500"/>
                     </GridView>
                 </ListView.View>
             </ListView>
