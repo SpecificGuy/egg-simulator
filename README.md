@@ -20,7 +20,7 @@ Then on the folder downloaded there's a folder Release where the compiled progra
 You can start the simulator with EggCalculator.exe executable file.
 # User manual #
 ## Calendar ##
-
+---
 ![Calendar view](https://github.com/SpecificGuy/egg-simulator/blob/main/docs/Calendar.png?raw=true)*Calendar view as the application is started.*
 
 The calendar view shows account growing day by day.
@@ -34,11 +34,12 @@ These fragments are then minted by the simulation into eggs and sold to the mark
 
 On the Calendar the main events are highlighted such as Eggs quantity, and Metamon purchases.
 
-### Calendar actions ###
-1.  The user can change the month visualized by clicking on the arrows on the top of the panel.
-2. By clicking on any day you can see the right section of the panel changing accordingly to the simulated day.
-### Simulation data ###
+By clicking on any day you can see the right section of the panel changing accordingly to the simulated day.
 
+User can also change the month visualized by clicking on the arrows on the top of the panel.
+
+### Simulation data ###
+---
 The right section of the program lists all the useful data of the day.
 In particular, the above section shows:
 
@@ -80,7 +81,7 @@ All the previous days are unaffected by it.
 
 **All the manual modification applied previously on some date after the one resimulated are lost, so the best-practice for the application is to apply manual changes in rigorous chronological order**
 ## Charts ##
-
+---
 ![Chart view](https://github.com/SpecificGuy/egg-simulator/blob/main/docs/Charts.png?raw=true)*Charts tracked by the simulation provide a overview summary of all the days simulated*
 
 Charts panel is available by clicking on the label on the top of the screen. This panel has the main purpose of showing the growing picture of the account using the data provided by the user.
@@ -111,12 +112,13 @@ Shows the match cost curve for each day and how it grows.
 Chart showing how must RACA are spent each day.
 
 ## Configuration ##
-
+---
 ![Configuration view](https://github.com/SpecificGuy/egg-simulator/blob/main/docs/Configuration.png?raw=true)*Configuration panel with default values.*
 
-The configuration panel let the user parametrize the simulation as he intend to do. It is divided by 4 main sections:
+The configuration panel let the user parametrize the simulation as he intend to do. It is divided by 4 main sections plus a Simulation button on the bottom of the screen:
 
-1. ### Starting Account State ###
+### Starting Account State ###
+---
 As the section suggest, this section must be populated by the user providing the actual state of his account. 
 This configuration is used by the simulation as the first simulated day.
 
@@ -135,15 +137,15 @@ In detail:
 
 6. Metamons - The panel above is very similar to the one already documented in [Simulation data](#simulation-data). The user can insert all the metamons owned and set them for their Rarity, Level and Experience.
 
-LOL
-
-2. ### Global Rates ###
+### Global Rates ###
+---
 This section contains all the data already in the game which is not supposed to change. In any case:
 
 1. Match Limit - Match allowed for each metamon in each day.
 2. Egg Fragment Quantity - Fragment quantity needed for minting an egg in the game
 
-3. ### Simulation parameters ###
+### Simulation parameters ###
+---
 This section contains all the parameters intended to be used for adjusting the simulation and test strategies. In particular
 
 1.  Minimum Raca Revenue - Minimum amount of RACA the user want to withdraw from the account when available. The formula for the Revenue withdraw is the following one:
@@ -176,6 +178,11 @@ The simulation auto by potions everytime a metamon reach the required experience
 9. Auto level up
 The simulation auto level up metamons when a metamon reach the required experience to level up.
 
-4. ### Prices ###
-
+### Prices ###
+---
 Prices of the market kept into consideration for the simulation and manual operations.
+### Simulation button ###
+---
+By pressing the button simulation the parameters inserted into the configuration panel are used to simulate starting from the beginning up to the day configured.
+
+**Beware that this functionality execute a totally new simulation, overriding completely the old one.**
