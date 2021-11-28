@@ -285,7 +285,18 @@ namespace EggCalculator.Constants
         };
         public static double[] MatchWinningRates { get; } = new double[4] { 0.7, 0.8, 0.85, 0.90 };
         public static int[] MatchExperience { get; } = new int[2] { 5, 3 };
-        public static int[] MatchRacaCost { get; } = new int[3] { 0, 0, 0 };
+        //public static int[] MatchRacaCost { get; } = new int[3] { 0, 0, 0 };
+
+        private static int[] matchRacaCost = new int[3] { 0, 0, 0 };
+
+        public static int[] MatchRacaCost
+        {
+            get { return matchRacaCost; }
+            set { matchRacaCost = value;
+                NotifyStaticPropertyChanged();
+            }
+        }
+
         private static int GetLeague(int level)
         {
             if (level > 40)

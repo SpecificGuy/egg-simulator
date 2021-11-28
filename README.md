@@ -143,7 +143,7 @@ This section contains all the data already in the game which is not supposed to 
 
 1. Match Limit - Match allowed for each metamon in each day.
 2. Egg Fragment Quantity - Fragment quantity needed for minting an egg in the game
-
+3. Raca Match Cost - Let the user configure the match cost in RACA for each level tier of the game.
 ### Simulation parameters ###
 ---
 This section contains all the parameters intended to be used for adjusting the simulation and test strategies. In particular

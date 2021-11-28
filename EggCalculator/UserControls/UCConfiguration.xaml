@@ -109,6 +109,23 @@
                 <TextBlock Text="Egg Fragment Quantity"></TextBlock>
                 <TextBox Text="{Binding ElementName=UserControl, Path=Rates.EggFragmentQuantity, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Raca Match Cost"></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <TextBlock Text="Apprentice"></TextBlock>
+                        <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MatchRacaCost[0], Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <TextBlock Text="Intermediate"></TextBlock>
+                        <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MatchRacaCost[1], Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <TextBlock Text="Advanced"></TextBlock>
+                        <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MatchRacaCost[2], Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
