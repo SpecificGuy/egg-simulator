@@ -194,7 +194,7 @@ By pressing the button simulation the parameters inserted into the configuration
 
 **Beware that this functionality execute a totally new simulation, overriding completely the old one.**
 
-### Simulation button ###
+### Export configuration to file button ###
 ---
 By pressing the button the configuration will be saved in the folder configuration and imported as the default configuration the next time the application will start up.
 
