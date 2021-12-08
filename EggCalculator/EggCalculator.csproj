@@ -6,6 +6,8 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>MetamonEgg.ico</ApplicationIcon>
     <Win32Resource />
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -14,6 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="InteractiveDataDisplay.WPF" Version="1.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -110,6 +110,10 @@
                 <TextBox Text="{Binding ElementName=UserControl, Path=Rates.EggFragmentQuantity, Mode=TwoWay, StringFormat=N0, ConverterCulture=de}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Market Tax Percentage"></TextBlock>
+                <TextBox Text="{Binding ElementName=UserControl, Path=Rates.MarketTaxPercentage, Mode=TwoWay, StringFormat=N2, ConverterCulture=de}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Raca Match Cost"></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
@@ -216,6 +220,9 @@
         </StackPanel>
         <DockPanel Grid.Row="1" Grid.Column="1">
             <local:UCMetamon Metamon="{Binding ElementName=MetamonGrid, Path=SelectedValue}"></local:UCMetamon>
+        </DockPanel>
+        <DockPanel Grid.Column="3" Grid.Row="1">
+            <Button Height="50" VerticalAlignment="Bottom" Content="Export configuration to file" Command="{Binding ElementName=UserControl, Path=SerializeConfigurationCommand}"></Button>
         </DockPanel>
     </Grid>
 </UserControl>

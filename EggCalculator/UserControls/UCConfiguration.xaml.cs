@@ -2,8 +2,10 @@
 using EggCalculator.Models;
 using EggCalculator.Utility;
 using EggCalculator.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,6 +121,38 @@ namespace EggCalculator.UserControls
                     );
                 }
                 return deleteMetamonCommand;
+            }
+        }
+
+        private ICommand serializeConfigurationCommand;
+
+        public ICommand SerializeConfigurationCommand
+        {
+            get
+            {
+                if (serializeConfigurationCommand == null)
+                {
+                    serializeConfigurationCommand = new RelayCommand(
+                        param => this.SerializeConfiguration(),
+                        param => true
+                    );
+                }
+                return serializeConfigurationCommand;
+            }
+        }
+
+        private void SerializeConfiguration()
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+
+            System.IO.Directory.CreateDirectory("configuration");
+
+            using (StreamWriter sw = new StreamWriter(@"configuration\configuration.json"))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, ((SimulationViewModel)DataContext));
+                // {"ExpiryDate":new Date(1230375600000),"Price":0}
             }
         }
 

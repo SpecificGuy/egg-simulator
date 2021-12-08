@@ -7,8 +7,21 @@
              mc:Ignorable="d" 
              x:Name="UserControl"
              d:DesignHeight="450" d:DesignWidth="800">
-    <DockPanel>
-        <TextBlock FontStyle="Italic" FontWeight="Bold" Text="Do you like this tool? Please consider donating RACA to "></TextBlock>
-        <Button  FontStyle="Italic" FontWeight="Bold" Content="0xDCa11E1108180D9638Efcc71a4c9db39e97A3085" Command="{Binding ElementName=UserControl, Path=CopyToClipboardCommand}"></Button>
-    </DockPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left">
+            <TextBlock HorizontalAlignment="Left" Text="Version " />
+            <TextBlock HorizontalAlignment="Left"  Text="{Binding ElementName=UserControl, Path=Version}"></TextBlock>
+        </StackPanel>
+        <DockPanel Grid.Column="1">
+            <TextBlock FontStyle="Italic" FontWeight="Bold" Text="Do you like this tool? Please consider donating RACA to "></TextBlock>
+            <Button  FontStyle="Italic" FontWeight="Bold" Content="0xDCa11E1108180D9638Efcc71a4c9db39e97A3085" Command="{Binding ElementName=UserControl, Path=CopyToClipboardCommand}"></Button>
+        </DockPanel>
+    </Grid>
 </UserControl>

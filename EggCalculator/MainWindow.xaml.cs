@@ -1,8 +1,10 @@
 ﻿using EggCalculator.Models;
 using EggCalculator.Utility;
 using EggCalculator.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +36,17 @@ namespace EggCalculator
         public MainWindow()
         {
             InitializeComponent();
-            SimulationViewModel vm = new SimulationViewModel(Calendar);
+            SimulationViewModel vm;
+            try
+            {
+                vm = JsonConvert.DeserializeObject<SimulationViewModel>(File.ReadAllText(@"configuration\configuration.json"));
+                vm.calendar = Calendar;
+                vm.calendar.CalendarDayMouseLeftClickedEvent += vm.Calendar_CalendarDayMouseLeftClickedEvent;
+            } catch(Exception e)
+            {
+               vm = new SimulationViewModel(Calendar);
+            }
+
             DataContext = vm;
             vm.OnSimulationEnd += Charts.OnSimulationEnd;
             vm.Simulate();

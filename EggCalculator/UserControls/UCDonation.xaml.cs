@@ -33,6 +33,8 @@ namespace EggCalculator.UserControls
         public static readonly DependencyProperty DonationAddressProperty =
             DependencyProperty.Register("DonationAddress", typeof(string), typeof(UCDonation), new PropertyMetadata("0xDCa11E1108180D9638Efcc71a4c9db39e97A3085"));
 
+        public string Version { get; set; } = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
 
         public UCDonation()
         {

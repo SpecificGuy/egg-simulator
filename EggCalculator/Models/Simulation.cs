@@ -1,5 +1,6 @@
 ﻿using EggCalculator.Constants;
 using EggCalculator.Utility;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -53,7 +54,7 @@ namespace EggCalculator.Models
         }
 
         private DailyResult dailyResult;
-
+        [JsonIgnore]
         public DailyResult DailyResult
         {
             get { return dailyResult; }
@@ -63,7 +64,7 @@ namespace EggCalculator.Models
         }
 
         private GameResult gameResult;
-
+        [JsonIgnore]
         public GameResult GameResult
         {
             get { return gameResult; }
@@ -71,8 +72,9 @@ namespace EggCalculator.Models
                 OnPropertyChanged();
             }
         }
-
+        [JsonIgnore]
         public ObservableCollection<String> Logs { get; set; } = new ObservableCollection<String>();
+        [JsonIgnore]
         public bool MainEvent { get; set; } = false;
 
         public Simulation()
@@ -214,9 +216,10 @@ namespace EggCalculator.Models
         {
             if (AccountState.EggBalance > 0)
             {
-                DailyResult.GrossDailyGain += AccountState.EggBalance * Rates.EggPrice;
-                Logs.Add($"[{AccountState.EggBalance} EGGS SOLD] Total gain {AccountState.EggBalance * Rates.EggPrice} RACA.");
-                AccountState.RacaBalance += Rates.EggPrice * AccountState.EggBalance;
+                int totalSellGain = (int) (AccountState.EggBalance * (Rates.EggPrice - Rates.EggPrice * Rates.MarketTaxPercentage/100));
+                DailyResult.GrossDailyGain += totalSellGain;
+                Logs.Add($"[{AccountState.EggBalance} EGGS SOLD] Total gain {totalSellGain} RACA.");
+                AccountState.RacaBalance += totalSellGain;
                 AccountState.EggBalance = 0;
             }
         }

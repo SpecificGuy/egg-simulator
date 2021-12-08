@@ -7,6 +7,13 @@ This software is completely free to use and open source.
 It takes A LOT of effort to develop, maintain and keep it updated.
 
 Please, if you find it any useful consider donating some kudos to the address in the program. I appreciate you so much! :heartpulse:
+
+# Latest releases #
+
+Version 1.0.1.0
+1.  Implemented Market Taxation - Configurable in configuration section
+2.  Implemented configuration exportation - Details explained on [Configuration](#configuration) panel.
+
 # Installation #
 
 To download the application go to Code above in this page and the click on Download ZIP.
@@ -150,7 +157,7 @@ This section contains all the parameters intended to be used for adjusting the s
 
 1.  Minimum Raca Revenue - Minimum amount of RACA the user want to withdraw from the account when available. The formula for the Revenue withdraw is the following one:
 
-    `DAILY_REVENUE = RACA_BALANCE - POTION_COST_NEXT_DAY - MATCH_COST_NEXT_DAY - MINIMUM_RACA_REVENUE`
+    `DAILY_REVENUE = RACA_BALANCE - (POTION_COST_NEXT_DAY - MATCH_COST_NEXT_DAY) * 2 - MINIMUM_RACA_REVENUE`
 
     If this formula return a quantity > 0, it is converted in Revenue for the account. This is because the simulation takes into account that some RACAs must be present in the account to play the next day matches and to level up all the metamons (i.e. Metamons under level 60).
 
@@ -186,3 +193,10 @@ Prices of the market kept into consideration for the simulation and manual opera
 By pressing the button simulation the parameters inserted into the configuration panel are used to simulate starting from the beginning up to the day configured.
 
 **Beware that this functionality execute a totally new simulation, overriding completely the old one.**
+
+### Simulation button ###
+---
+By pressing the button the configuration will be saved in the folder configuration and imported as the default configuration the next time the application will start up.
+
+The file must be present in the folder to let the app import the file correctly.
+The file can be also edited manually to insert additional data not actually configurable from the UI

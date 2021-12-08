@@ -10,7 +10,7 @@
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         x:Name="mw"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Egg Simulator" Height="450" Width="800">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -55,7 +55,7 @@
                 <uc:UCPrice></uc:UCPrice>
             </TabItem>
         </TabControl>
-        <DockPanel HorizontalAlignment="Right"  Grid.Row="1">
+        <DockPanel Grid.Row="1">
             <uc:UCDonation></uc:UCDonation>
         </DockPanel>
     </Grid>

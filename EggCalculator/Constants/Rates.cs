@@ -1,4 +1,5 @@
 ﻿using EggCalculator.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace EggCalculator.Constants
         //public static int MetamonCountPotionBuyStart = 2;
 
         private static int experienceOffset = 200;
-
+        [JsonProperty]
         public static int ExperienceOffset
         {
             get { return experienceOffset ; }
@@ -33,7 +34,7 @@ namespace EggCalculator.Constants
 
 
         private static int matchLimit = 20;
-
+        [JsonProperty]
         public static int MatchLimit
         {
             get { return matchLimit; }
@@ -43,7 +44,7 @@ namespace EggCalculator.Constants
         }
 
         private static int baseExperience = 100;
-
+        [JsonProperty]
         public static int BaseExperience
         {
             get { return baseExperience; }
@@ -53,7 +54,7 @@ namespace EggCalculator.Constants
         }
 
         private static int eggPrice = 110000;
-
+        [JsonProperty]
         public static int EggPrice
         {
             get { return eggPrice; }
@@ -63,7 +64,7 @@ namespace EggCalculator.Constants
         }
 
         private static int normalMetamonPrice = 700000;
-
+        [JsonProperty]
         public static int NormalMetamonPrice
         {
             get { return normalMetamonPrice; }
@@ -73,7 +74,7 @@ namespace EggCalculator.Constants
         }
 
         private static int rareMetamonPrice = 5200000;
-
+        [JsonProperty]
         public static int RareMetamonPrice
         {
             get { return rareMetamonPrice; }
@@ -83,7 +84,7 @@ namespace EggCalculator.Constants
         }
 
         private static int superRareMetamonPrice = 40000000;
-
+        [JsonProperty]
         public static int SuperRareMetamonPrice
         {
             get { return superRareMetamonPrice; }
@@ -93,7 +94,7 @@ namespace EggCalculator.Constants
         }
 
         private static int superSuperRareMetamonPrice = 120000000;
-
+        [JsonProperty]
         public static int SuperSuperRareMetamonPrice
         {
             get { return superSuperRareMetamonPrice; }
@@ -103,7 +104,7 @@ namespace EggCalculator.Constants
         }
 
         private static int potionPrice = 13000;
-
+        [JsonProperty]
         public static int PotionPrice
         {
             get { return potionPrice; }
@@ -113,7 +114,7 @@ namespace EggCalculator.Constants
         }
 
         private static int yellowDiamondPrice = 52000;
-
+        [JsonProperty]
         public static int YellowDiamondPrice
         {
             get { return yellowDiamondPrice; }
@@ -125,7 +126,7 @@ namespace EggCalculator.Constants
         }
 
         private static int violetDiamondPrice = 310000;
-
+        [JsonProperty]
         public static int VioletDiamondPrice
         {
             get { return violetDiamondPrice; }
@@ -138,7 +139,7 @@ namespace EggCalculator.Constants
 
 
         private static int blackDiamondPrice = 150000;
-
+        [JsonProperty]
         public static int BlackDiamondPrice
         {
             get { return blackDiamondPrice; }
@@ -151,7 +152,7 @@ namespace EggCalculator.Constants
 
 
         private static int eggFragmentQuantity = 1000;
-
+        [JsonProperty]
         public static int EggFragmentQuantity
         {
             get { return eggFragmentQuantity; }
@@ -162,7 +163,7 @@ namespace EggCalculator.Constants
         }
 
         private static int minimumRacaRevenue = 200000;
-
+        [JsonProperty]
         public static int MinimumRacaRevenue
         {
             get { return minimumRacaRevenue; }
@@ -172,7 +173,7 @@ namespace EggCalculator.Constants
         }
 
         private static int metamonCountRevenueStart = 30;
-
+        [JsonProperty]
         public static int MetamonCountRevenueStart
         {
             get { return metamonCountRevenueStart; }
@@ -182,7 +183,7 @@ namespace EggCalculator.Constants
         }
 
         private static int metamonCountPotionBuyStart = 2;
-
+        [JsonProperty]
         public static int MetamonCountPotionBuyStart
         {
             get { return metamonCountPotionBuyStart; }
@@ -193,102 +194,29 @@ namespace EggCalculator.Constants
 
 
         public static event PropertyChangedEventHandler StaticPropertyChanged;
-
         private static void NotifyStaticPropertyChanged([CallerMemberName] string propertyName = null)
         {
             StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static int[,] FragmentsWinningRates { get; } = new int[4, 3] {
-                { 24, 67, 187 }, //normal metamon rates
-                { 40, 112, 313 }, //rare metamon rates
-                { 64, 179, 501 }, //superrare metamon rates
-                { 128, 358, 1002 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsLosingRates { get; } = new int[4, 3] {
-                { 12, 33, 92 }, //normal metamon rates
-                { 20, 56, 156 }, //rare metamon rates
-                { 32, 89, 249 }, //superrare metamon rates
-                { 64, 179, 501 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsWinningRatesFirstNerf { get; } = new int[4, 3] {
-                { 21, 58, 168 }, //normal metamon rates
-                { 40, 112, 313 }, //rare metamon rates
-                { 64, 179, 501 }, //superrare metamon rates
-                { 128, 358, 1002 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsLosingRatesFirstNerf { get; } = new int[4, 3] {
-                { 10, 28, 78 }, //normal metamon rates
-                { 20, 56, 156 }, //rare metamon rates
-                { 32, 89, 249 }, //superrare metamon rates
-                { 64, 179, 501 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsWinningRatesSecondNerf { get; } = new int[4, 3] {
-                { 18, 50, 140 }, //normal metamon rates
-                { 40, 112, 313 }, //rare metamon rates
-                { 64, 179, 501 }, //superrare metamon rates
-                { 128, 358, 1002 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsLosingRatesSecondNerf { get; } = new int[4, 3] {
-                { 9, 25, 70 }, //normal metamon rates
-                { 20, 56, 156 }, //rare metamon rates
-                { 32, 89, 249 }, //superrare metamon rates
-                { 64, 179, 501 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsWinningRatesThirdNerf { get; } = new int[4, 3] {
-                { 15, 42, 117 }, //normal metamon rates
-                { 40, 112, 313 }, //rare metamon rates
-                { 64, 179, 501 }, //superrare metamon rates
-                { 128, 358, 1002 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsLosingRatesThirdNerf { get; } = new int[4, 3] {
-                { 7, 19, 53 }, //normal metamon rates
-                { 20, 56, 156 }, //rare metamon rates
-                { 32, 89, 249 }, //superrare metamon rates
-                { 64, 179, 501 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsWinningRatesFourthNerf { get; } = new int[4, 3] {
-                { 12, 33, 92 }, //normal metamon rates
-                { 40, 112, 313 }, //rare metamon rates
-                { 64, 179, 501 }, //superrare metamon rates
-                { 128, 358, 1002 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsLosingRatesFourthNerf { get; } = new int[4, 3] {
-                { 6, 16, 44 }, //normal metamon rates
-                { 20, 56, 156 }, //rare metamon rates
-                { 32, 89, 249 }, //superrare metamon rates
-                { 64, 179, 501 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsWinningRatesFifthNerf { get; } = new int[4, 3] {
-                { 9, 25, 70 }, //normal metamon rates
-                { 40, 112, 313 }, //rare metamon rates
-                { 64, 179, 501 }, //superrare metamon rates
-                { 128, 358, 1002 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsLosingRatesFifthNerf { get; } = new int[4, 3] {
-                { 4, 11, 30 }, //normal metamon rates
-                { 20, 56, 156 }, //rare metamon rates
-                { 32, 89, 249 }, //superrare metamon rates
-                { 64, 179, 501 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsWinningRatesSixthNerf { get; } = new int[4, 3] {
-                { 6, 16, 44 }, //normal metamon rates
-                { 40, 112, 313 }, //rare metamon rates
-                { 64, 179, 501 }, //superrare metamon rates
-                { 128, 358, 1002 }  //supersuperrare metamon rates
-        };
-        public static int[,] FragmentsLosingRatesSixthNerf { get; } = new int[4, 3] {
-                { 3, 8, 22 }, //normal metamon rates
-                { 20, 56, 156 }, //rare metamon rates
-                { 32, 89, 249 }, //superrare metamon rates
-                { 64, 179, 501 }  //supersuperrare metamon rates
-        };
+        [JsonProperty]
         public static double[] MatchWinningRates { get; } = new double[4] { 0.7, 0.8, 0.85, 0.90 };
+        [JsonProperty]
         public static int[] MatchExperience { get; } = new int[2] { 5, 3 };
         //public static int[] MatchRacaCost { get; } = new int[3] { 0, 0, 0 };
 
-        private static int[] matchRacaCost = new int[3] { 0, 0, 0 };
+        private static double marketTaxPercentage = 3.0;
+        [JsonProperty]
+        public static double MarketTaxPercentage
+        {
+            get { return marketTaxPercentage; }
+            set { marketTaxPercentage = value;
+                NotifyStaticPropertyChanged();
+            }
+        }
 
+        private static int[] matchRacaCost = new int[3] { 0, 0, 0 };
+        [JsonProperty]
         public static int[] MatchRacaCost
         {
             get { return matchRacaCost; }

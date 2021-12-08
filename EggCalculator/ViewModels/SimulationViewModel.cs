@@ -1,5 +1,6 @@
 ﻿using EggCalculator.Constants;
 using EggCalculator.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,8 +16,10 @@ namespace EggCalculator.ViewModels
     {
 
         public event EventHandler<List<ICalendarEvent>> OnSimulationEnd;
+        [JsonIgnore]
 
-        private CalendarMonth calendar;
+        public CalendarMonth calendar;
+
         private List<ICalendarEvent> events;
         private Simulation selectedSimulation;
         private Simulation startingSimulation;
@@ -111,7 +114,7 @@ namespace EggCalculator.ViewModels
                 OnPropertyChanged("StartingSimulation");
             }
         }
-
+        [JsonIgnore]
         public List<ICalendarEvent> Events
         {
             get { return events; }
@@ -121,7 +124,7 @@ namespace EggCalculator.ViewModels
                 calendar.DrawDays();
             }
         }
-
+         [JsonIgnore]
         public Simulation SelectedSimulation
         {
             get { return selectedSimulation; }
@@ -131,6 +134,8 @@ namespace EggCalculator.ViewModels
                 OnPropertyChanged("SelectedSimulation");
             }
         }
+
+        public SimulationViewModel(){}
 
         public SimulationViewModel(CalendarMonth c)
         {
@@ -265,7 +270,7 @@ namespace EggCalculator.ViewModels
             OnSimulationEnd?.Invoke(this, Events);
         }
 
-        private void Calendar_CalendarDayMouseLeftClickedEvent(object sender, CalendarEventView e)
+        public void Calendar_CalendarDayMouseLeftClickedEvent(object sender, CalendarEventView e)
         {
             if (e.DataContext is Simulation calendarEvent)
             {
